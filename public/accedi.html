@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="style.css">
     <!--Stylesheet-->
-
 
     <style media="screen">
         *,
@@ -147,7 +145,7 @@
             display: none;
         }
         
-        </style>
+    </style>
 </head>
 <body>
         
@@ -156,88 +154,28 @@
         <div class="shape"></div>
     </div>
 
-   
     <button type="button" id="home" style="width: 40px; height: 40px; margin-left: 10px" class="btn btn-danger d-flex align-items-center" onClick="window.location.href='home.html';">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house mx-auto" viewBox="0 0 16 16">
         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
       </svg>
     </button>
     
-    <div class="background block" id="formAccedi">
-    <form action="#" method="POST">
-      <div style="display: flex; justify-content: center;">
-        <img src="DuckLogoBlue.png" style="width: 300px; border-radius: 15px;">
-      </div>
-        
-        <h3>Accedi all'account</h3>
-        <form id="formAccedi" action="#" method="POST">
-          <input typ="text" name="nome" id="nome" placeholder="name" style="padding-left: 10px;">
-          <input typ="text" name="password" id="password" placeholder="password" style="padding-left: 10px;">
-  
-          <button type="submit" id="accedi" class="btn-primary" onClick="" >Accedi</button>
-
-
-          <!--<p style="padding-left: 10px;" class="mt-2">Sei nuovo da queste parti? <a href="registrati.html" style="color:blue; margin-top: 5px;" class="mt-2 text-center"> Registrati</a></p>-->
-           
-        </form>
-
-        
-
-
-
-        <?php
-require_once('connessione.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") { 
-    $nome = $_POST['nome'];
-    $pass = $_POST['password'];
-
-    $sqlSelect = "SELECT * FROM giocatore WHERE nome = '$nome'";
-    $result = mysqli_query($connessione, $sqlSelect);
-
-    if ($result) {
-        $numeroRighe = mysqli_num_rows($result);
-
-        if ($numeroRighe > 0) {
-            //utente esiste
-            header('Location: preGame.html');
+    <div class="background block" id="formAccedi1">
+        <form id="formAccedi">
+            <div style="display: flex; justify-content: center;">
+                <img src="DuckLogoBlue.png" style="width: 300px; border-radius: 15px;">
+            </div>
+            
+            <h3>Accedi all'account</h3>
+            
+            <input type="text" name="nome" id="nome" placeholder="name" style="padding-left: 10px;">
+            <input type="text" name="password" id="password" placeholder="password" style="padding-left: 10px;">
     
-        } else {
-          //utente non esiste
-            echo "<p style='color:white'>Utente non trovato</p>";
-            echo "<script>var numeroRighe = 0;</script>";
-        }
-    } else {
-        echo "Errore nell'esecuzione della query: " . mysqli_error($connessione);
-    }
-}
+            <button type="submit" id="accedi" class="btn-primary">Accedi</button>
+        </form>
+       
+    </div>
 
-        ?>
-        
-        <script>
-          var numeroRighe = <?php echo $numeroRighe; ?>;
-
-          if (numeroRighe<=0 ) {
-            const div = document.getElementById ("formAccedi");
-            const divNuovo = document.getElementById ("divPerRegistrarsi");
-            div.classList.remove("block");
-            div.classList.add("none");
-
-            divNuovo.classList.remove("none");
-            divNuovo.classList.add("block");  
-          }
-          </script>
-
-     
-          
-    </form>
-
-    <div id="divPerRegistrarsi" class="none">
-        <p style="padding-left: 10px;" class="mt-2"><a href="registrati.html" style="color:blue; margin-top: 5px;" class="mt-2 text-center"> Registrati</a></p>
-           
-        </div>
-
-</div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
